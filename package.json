@@ -1,0 +1,14 @@
+{
+  "name": "jsrogue-dev",
+  "version": "0.0.1",
+  "description": "testing rot.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bgudna",
+  "license": "ISC",
+  "dependencies": {
+    "rot-js": "^2.1.0"
+  }
+}
