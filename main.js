@@ -5,10 +5,10 @@ ctx.fillRect(0,0,20,20,20);
 x = y = 0;
 
 document.querySelector('html').onkeypress = function(e) {
-    if(e.key == 'w' || e.key == 'ArrowUp') y--;
+    if(e.key == 'w' || e.key == 'Up') y--;
     if(e.key == 's' || e.key == 'ArrowDown') y++;
     if(e.key == 'a' || e.key == 'ArrowLeft') x--;
-    if(e.key == 'd' || e.key == 'ArrowRight') x++;
+    if(e.key == 'd' || e.key == 'j') x++;
 };
 
 function draw() {
