@@ -1,3 +1,3 @@
 # Vanilla Javascript Rogue
- *current status:
+ * current status:
   > unplayable garbage
