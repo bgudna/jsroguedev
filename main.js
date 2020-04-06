@@ -5,8 +5,6 @@ uiWidth = 2;
 canvas = document.querySelector('canvas');
 wzrd = canvas.getContext('2d');
 wzrd.fillRect(0,0,20,20,20);
-wzrd.imageSmoothingEnabled = false;
-
 
 canvas.width = tileSize*(numTiles*uiWidth);
 canvas.height = tileSize*numTiles;
@@ -38,8 +36,17 @@ function teikniteikni(sprite, x, y) {
 }
 
 function draw() {
+    wzrd.imageSmoothingEnabled = false;
     wzrd.clearRect(0,0,canvas.width,canvas.height);
+
+    for(let i=0;i<numTiles;i++) {
+        for(let j=0;j<numTiles;j++) {
+            getTile(i,j).draw();
+        }
+    }
+    
     teikniteikni(0, x, y);
 }
 
 setInterval(draw, 15);
+generateLevel();
