@@ -1,6 +1,8 @@
-tileSize = 64;
-numTiles = 9;
-uiWidth = 2;
+tileSize = 32;
+numTiles = 12;
+uiWidth = 1;
+
+var goingUp, goingDown, goingLeft, goingRight;
 
 canvas = document.querySelector('canvas');
 wzrd = canvas.getContext('2d');
@@ -17,7 +19,10 @@ spritez = new Image();
 spritez.src = 'img/lolwhut.png';
 
 document.querySelector('html').onkeypress = function(e) {
-    if(e.key == 'w' || e.key == 'k') y--;
+    if(e.key == 'w' || e.key == 'k') {
+        y--;
+        goingUp = true;
+    } 
     if(e.key == 's' || e.key == 'j') y++;
     if(e.key == 'a' || e.key == 'h') x--;
     if(e.key == 'd' || e.key == 'l') x++;
@@ -44,9 +49,13 @@ function draw() {
             getTile(i,j).draw();
         }
     }
-    
+
     teikniteikni(0, x, y);
 }
 
 setInterval(draw, 15);
 generateLevel();
+
+startingTile = randomPassableTile();
+x = startingTile.x;
+y = startingTile.y;

@@ -1,7 +1,11 @@
 var tiles = [];
+let passableTiles=0;
 
 function generateLevel() {
-    generateTiles();
+    //generateTiles();
+    reynaRigga('rigga kortinu', function(){
+        return generateTiles() == randomPassableTile().getConnectedTiles().length;
+    });
 }
 
 function generateTiles() {
@@ -12,9 +16,11 @@ function generateTiles() {
                 tiles[i][j] = new Wall(i,j);
             } else {
                 tiles[i][j] = new Floor(i,j);
+                passableTiles++;
             }
         }
     }
+    return passableTiles;
 }
 
 function inBounds(x,y) {
@@ -27,4 +33,15 @@ function getTile(x, y) {
     } else {
         return new Wall(x,y);
     }
+}
+
+function randomPassableTile() {
+    let tile;
+    reynaRigga('finna random yfirstiganlega flis', function() {
+        let x = randomRange(0,numTiles-1);
+        let y = randomRange(0,numTiles-1);
+        tile = getTile(x, y);
+        return tile.passable && !tile.monster;
+    });
+return tile;
 }
