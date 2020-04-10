@@ -2,7 +2,6 @@ var tiles = [];
 let passableTiles=0;
 
 function generateLevel() {
-    //generateTiles();
     reynaRigga('rigga kortinu', function(){
         return generateTiles() == randomPassableTile().getConnectedTiles().length;
     });
@@ -43,5 +42,5 @@ function randomPassableTile() {
         tile = getTile(x, y);
         return tile.passable && !tile.monster;
     });
-return tile;
+    return tile;
 }

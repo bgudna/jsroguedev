@@ -1,4 +1,4 @@
-class Tile{
+class Tile {
     constructor(x, y, sprite, passable){
         this.x = x;
         this.y = y;
@@ -41,7 +41,7 @@ class Tile{
     }
 }
 
-class Floor extends Tile{
+class Floor extends Tile {
     constructor(x,y){
         super(x, y, 2, true);
     };
