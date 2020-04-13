@@ -1,19 +1,24 @@
-var tiles = [];
-let passableTiles=0;
-
-function generateLevel() {
-    reynaRigga('rigga kortinu', function(){
+function generateLevel(){
+    tryTo('generate map', function(){
         return generateTiles() == randomPassableTile().getConnectedTiles().length;
     });
+
+    generateMonsters();
+                                           
+    for(let i=0;i<3;i++){                                         
+        randomPassableTile().treasure = true;                            
+    }
 }
 
-function generateTiles() {
-    for(let i=0;i<numTiles;i++) {
+function generateTiles(){
+    let passableTiles=0;
+    tiles = [];
+    for(let i=0;i<numTiles;i++){
         tiles[i] = [];
-        for(let j=0;j<numTiles;j++) {
-            if(Math.random() < 0.3 || !inBounds(i, j)) {
+        for(let j=0;j<numTiles;j++){
+            if(Math.random() < 0.3 || !inBounds(i,j)){
                 tiles[i][j] = new Wall(i,j);
-            } else {
+            }else{
                 tiles[i][j] = new Floor(i,j);
                 passableTiles++;
             }
@@ -22,25 +27,40 @@ function generateTiles() {
     return passableTiles;
 }
 
-function inBounds(x,y) {
+function inBounds(x,y){
     return x>0 && y>0 && x<numTiles-1 && y<numTiles-1;
 }
 
-function getTile(x, y) {
-    if(inBounds(x,y)) {
+
+function getTile(x, y){
+    if(inBounds(x,y)){
         return tiles[x][y];
-    } else {
+    }else{
         return new Wall(x,y);
     }
 }
 
-function randomPassableTile() {
+function randomPassableTile(){
     let tile;
-    reynaRigga('finna random yfirstiganlega flis', function() {
+    tryTo('get random passable tile', function(){
         let x = randomRange(0,numTiles-1);
         let y = randomRange(0,numTiles-1);
         tile = getTile(x, y);
         return tile.passable && !tile.monster;
     });
     return tile;
+}
+
+function generateMonsters(){
+    monsters = [];
+    let numMonsters = level+1;
+    for(let i=0;i<numMonsters;i++){
+        spawnMonster();
+    }
+}
+
+function spawnMonster(){
+    let monsterType = shuffle([Bird, Snake, Tank, Eater, Jester])[0];
+    let monster = new monsterType(randomPassableTile());
+    monsters.push(monster);
 }

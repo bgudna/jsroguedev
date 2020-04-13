@@ -1,59 +1,46 @@
-tileSize = 32;
-numTiles = 12;
-uiWidth = 1;
+tileSize = 64;
+numTiles = 9;
+uiWidth = 4;
+level = 1;
+maxHp = 6;
 
-x = y = 0;
+spritesheet = new Image();
+spritesheet.src = 'img/lolwhut.png';
+spritesheet.onload = showTitle;
+                         
+gameState = "loading";  
 
-var leikmadur = new Leikmadur(randomPassableTile());
+startingHp = 3; 
+numLevels = 6;      
 
-var goingUp, goingDown, goingLeft, goingRight;
+shakeAmount = 0;       
+shakeX = 0;                 
+shakeY = 0;      
 
-canvas = document.querySelector('canvas');
-wzrd = canvas.getContext('2d');
-wzrd.fillRect(0,0,20,20,20);
+document.querySelector("html").onkeypress = function(e){
+    if(gameState == "title"){                              
+        startGame();                
+    }else if(gameState == "dead"){                             
+        showTitle();                                        
+    }else if(gameState == "running"){            
+        if(e.key=="w" || e.key=="k") player.tryMove(0, -1);
+        if(e.key=="s" || e.key=="j") player.tryMove(0, 1);
+        if(e.key=="a" || e.key=="h") player.tryMove(-1, 0);
+        if(e.key=="d" || e.key=="l") player.tryMove(1, 0);
 
-canvas.width = tileSize*(numTiles*uiWidth);
-canvas.height = tileSize*numTiles;
-canvas.style.width = canvas.width + "px";
-canvas.style.height = canvas.height + "px";
-
-spritez = new Image();
-spritez.src = 'img/lolwhut.png';
-
-document.querySelector('html').onkeypress = function(e) {
-    if(e.key == 'w' || e.key == 'k') {
-        leikmadur.tryMove(0, -1);
-        goingUp = true;
-    } 
-    if(e.key == 's' || e.key == 'j') leikmadur.tryMove(0, 1);
-    if(e.key == 'a' || e.key == 'h') leikmadur.tryMove(-1, 0);
-    if(e.key == 'd' || e.key == 'l') leikmadur.tryMove(1, 0);
-};
-
-document.querySelector('html').onkeydown = function(e) {
-    if(e.key == 'ArrowUp') leikmadur.tryMove(0, -1);
-    if(e.key == 'ArrowDown') leikmadur.tryMove(0, 1);
-    if(e.key == 'ArrowLeft') leikmadur.tryMove(-1, 0);
-    if(e.key == 'ArrowRight') leikmadur.tryMove(0, 0);
-};
-
-
-function teikniteikni(sprite, x, y) {
-    wzrd.drawImage(spritez, sprite*16, 0, 16, 16, x*tileSize, y*tileSize, tileSize, tileSize);
-}
-
-function draw() {
-    wzrd.imageSmoothingEnabled = false;
-    wzrd.clearRect(0,0,canvas.width,canvas.height);
-
-    for(let i=0;i<numTiles;i++) {
-        for(let j=0;j<numTiles;j++) {
-            getTile(i,j).draw();
-        }
+        if(e.key>=1 && e.key<=9) player.castSpell(e.key-1);
     }
+};
 
-    leikmadur.draw();
-}
+document.querySelector("html").onkeydown = function(e){                                 
+    if(gameState == "running") {            
+        if(e.key=="ArrowUp") player.tryMove(0, -1);
+        if(e.key=="ArrowDown") player.tryMove(0, 1);
+        if(e.key=="ArrowLeft") player.tryMove(-1, 0);
+        if(e.key=="ArrowRight") player.tryMove(1, 0);
+    }
+};
 
 setInterval(draw, 15);
-generateLevel();
+
+setupCanvas();
