@@ -1,6 +1,6 @@
-tileSize = 64;
-numTiles = 9;
-uiWidth = 4;
+tileSize = 32;
+numTiles = 18;
+uiWidth = 8;
 level = 1;
 maxHp = 6;
 

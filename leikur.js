@@ -81,8 +81,8 @@ function showTitle(){
 
     gameState = "title";
 
-    drawText("SUPER", 40, true, canvas.height/2 - 110, "white");
-    drawText("BROUGH BROS.", 70, true, canvas.height/2 - 50, "white"); 
+    drawText("this is a title screen", 40, true, canvas.height/2 - 110, "white");
+    drawText("for something", 70, true, canvas.height/2 - 50, "white"); 
 
     drawScores(); 
 }
