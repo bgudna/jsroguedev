@@ -79,7 +79,6 @@ class Floor extends Tile{
                 numSpells++;                
                 player.addSpell();            
             }  
-            playSound("treasure");            
             this.treasure = false;
             spawnMonster();
         }

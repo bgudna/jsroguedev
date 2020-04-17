@@ -23,6 +23,7 @@ function drawSprite(sprite, x, y){
     );
 }
 
+
 function draw(){
     if(gameState == "running" || gameState == "dead"){  
         ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -40,7 +41,7 @@ function draw(){
         }
 
         player.draw();
-
+        
         drawText("Level: "+level, 30, false, 40, "violet");
         drawText("Score: "+score, 30, false, 70, "violet");
 
@@ -84,7 +85,8 @@ function showTitle(){
     drawText("this is a title screen", 40, true, canvas.height/2 - 110, "white");
     drawText("for something", 70, true, canvas.height/2 - 50, "white"); 
 
-    drawScores(); 
+    drawScores();
+    
 }
 
 function startGame(){                                           
@@ -187,19 +189,4 @@ function screenshake(){
     let shakeAngle = Math.random()*Math.PI*2;
     shakeX = Math.round(Math.cos(shakeAngle)*shakeAmount);
     shakeY = Math.round(Math.sin(shakeAngle)*shakeAmount);
-}
-
-function initSounds(){          
-    sounds = {
-        hit1: new Audio('sounds/hit1.wav'),
-        hit2: new Audio('sounds/hit2.wav'),
-        treasure: new Audio('sounds/treasure.wav'),
-        newLevel: new Audio('sounds/newLevel.wav'),
-        spell: new Audio('sounds/spell.wav'),
-    };
-}
-
-function playSound(soundName){                       
-    sounds[soundName].currentTime = 0;  
-    sounds[soundName].play();
 }
