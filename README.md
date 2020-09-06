@@ -1,17 +1,12 @@
-# Vanilla Javascript Rogue
- * current status:
-  > unplayable garbage
+# Vanilla Javascript Roguelike
 
-# Todo & Plans
- * draw more sprites
- > more enemies, status items, spells, town clowns
- * add a town/village where you can stock up on stuff before entering the death dungeon
- > unstarted
- * intro screen
- > unstarted
- * name and gender player
- > unstarted
- * attribute points distribution
- > should be on the name screen - unstarted
- * fog of war
- > attempt this with CSS - unstarted
+## current status
+unplayable mess
+
+### TODO
+- [ ] a complete sprite overhaul, current sprites are temp garbage
+- [ ] add a town/village/intro area where you can stock up on stuff before entering the death dungeon
+- [ ] name player
+- [ ] attribute points distribution
+- [ ] design a proper UI
+- [ ] generate lore?
