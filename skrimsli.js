@@ -100,9 +100,11 @@ class Monster{
         }
 
         if(this.isPlayer){                                                     
-            playSound("hit1");                                              
+            //playSound("hit1");
+            console.log('hit1');                                              
         }else{                                                       
-            playSound("hit2");                                              
+            //playSound("hit2");
+            console.log('hit2');                                              
         }
     }
 

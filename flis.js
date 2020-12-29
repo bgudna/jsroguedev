@@ -98,7 +98,8 @@ class Exit extends Tile{
 
     stepOn(monster){
         if(monster.isPlayer){
-            playSound("newLevel"); 
+            //playSound("newLevel"); 
+            console.log('boom!');
             if(level == numLevels){
                 addScore(score, true); 
                 showTitle();
