@@ -1,3 +1,5 @@
+// this file is for extra utilities and helper functions
+
 function tryTo(description, callback){
     for(let timeout=1000;timeout>0;timeout--){
         if(callback()){

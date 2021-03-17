@@ -1,3 +1,5 @@
+// here we generate player, enemies and other "beings" for the game
+
 class Monster{
     constructor(tile, sprite, hp){
         this.move(tile);

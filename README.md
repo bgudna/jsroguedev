@@ -2,13 +2,14 @@
 A destroyed city, you're in a mech. You need to get out!
 
 ## current status
-unplayable mess
+playable but all wrong, needs new sprites, and more sprites!
 
 ### TODO
 - [ ] a complete sprite overhaul, current sprites are temp garbage
 - [ ] add a proper intro/welcome screen, digital painting
 - [ ] add a pause screen (when pressing escape) - show game logo
-- [ ] name player
+- [ ] implement a help screen (when pressing "?" or "F1" - function in place, just need the text!)
+- [ ] name player option?
 - [ ] attribute points distribution
 - [ ] implement mouse/touch interactions
 - [ ] design a proper UI, showing stats and item names

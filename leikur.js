@@ -44,10 +44,16 @@ function draw(){
         
         drawText("Level: "+level, 30, false, 40, "violet");
         drawText("Score: "+score, 30, false, 70, "violet");
+        if(player.hp > 0) {
+            drawText("Health: " +player.hp, 20, false, 100, "green");
+        } else {
+            drawText("You are dead", 20, false, 100, "red");
+        }
+        
 
         for(let i=0; i<player.spells.length; i++){
             let spellText = (i+1) + ") " + (player.spells[i] || "");                        
-            drawText(spellText, 20, false, 110+i*40, "aqua");        
+            drawText(spellText, 20, false, 140+i*40, "aqua");        
         }
     }
 }
@@ -71,6 +77,7 @@ function tick(){
     spawnCounter--;
     if(spawnCounter <= 0){  
         spawnMonster();
+        console.log("spawning!")
         spawnCounter = spawnRate;
         spawnRate--;
     }
@@ -87,6 +94,13 @@ function showTitle(){
 
     drawScores();
     
+}
+
+function showHelp(){
+    ctx.fillStyle = 'rgba(0,0,0,.75)';
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+    gameState = "paused";
+    drawText("This is your help screen for today, I will tell you how to play the game at some point.", 15, true, canvas.height/2, "white");
 }
 
 function startGame(){                                           
@@ -180,6 +194,8 @@ function drawScores(){
             );
         }
     }
+
+    //console.log(scores);
 }
 
 function screenshake(){

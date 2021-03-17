@@ -1,3 +1,5 @@
+// settings and setups
+
 tileSize = 32;
 numTiles = 18;
 uiWidth = 8;
@@ -29,7 +31,10 @@ document.querySelector("html").onkeypress = function(e){
         if(e.key=="d" || e.key=="l") player.tryMove(1, 0);
 
         if(e.key>=1 && e.key<=9) player.castSpell(e.key-1);
-    }
+        if(e.key=="?" || e.key=="F1") showHelp();
+        } else if(gameState == "paused") {
+            if(e.key=="?" || e.key=="Escape" || e.key=="F1") gameState = "running";
+        }
 };
 
 document.querySelector("html").onkeydown = function(e){                                 
