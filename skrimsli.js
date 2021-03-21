@@ -59,12 +59,14 @@ class Monster{
     }
 
     drawHp(){
-        for(let i=0; i<this.hp; i++){
-            drawSprite(
-                9,
-                this.getDisplayX() + (i%3)*(5/16),   
-                this.getDisplayY() - Math.floor(i/3)*(5/16)
-            );
+        if(!this.isPlayer) {
+            for(let i=0; i<this.hp; i++){
+                drawSprite(
+                    9,
+                    this.getDisplayX() + (i%3)*(5/16),   
+                    this.getDisplayY() - Math.floor(i/3)*(5/16)
+                );
+            }
         }
     }   
 

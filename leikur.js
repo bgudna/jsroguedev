@@ -5,7 +5,7 @@ function setupCanvas(){
     canvas.width = tileSize*(numTiles+uiWidth);
     canvas.height = tileSize*numTiles;
     canvas.style.width = canvas.width + 'px';
-    canvas.style.height = canvas.height + 'px';
+    //canvas.style.height = canvas.height + 'px';
     ctx.imageSmoothingEnabled = false;
 }
 
@@ -42,8 +42,8 @@ function draw(){
 
         player.draw();
         
-        drawText("Level: "+level, 30, false, 40, "violet");
-        drawText("Score: "+score, 30, false, 70, "violet");
+        drawText("Level: "+level, 20, false, 40, "violet");
+        drawText("Score: "+score, 20, false, 70, "violet");
         if(player.hp > 0) {
             drawText("Health: " +player.hp, 20, false, 100, "green");
         } else {
@@ -64,6 +64,11 @@ function tick(){
             monsters[k].update();
         }else{
             monsters.splice(k,1);
+            let heartChance = randomRange(1,4);
+            if(heartChance == 2) {
+                randomPassableTile().heart = true;
+            }
+            
         }
     }
 

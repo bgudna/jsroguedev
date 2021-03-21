@@ -52,6 +52,9 @@ class Tile{
         if(this.treasure){                      
             drawSprite(12, this.x, this.y);                                             
         }
+        if(this.heart) {
+            drawSprite(17, this.x, this.y);
+        }
 
         if(this.effectCounter){                    
             this.effectCounter--;
@@ -82,6 +85,11 @@ class Floor extends Tile{
             this.treasure = false;
             spawnMonster();
         }
+        if(monster.isPlayer && this.heart){   
+            console.log("got heart!")
+            player.hp++;
+            this.heart = false;
+        }
     }
 }
 
@@ -99,7 +107,7 @@ class Exit extends Tile{
     stepOn(monster){
         if(monster.isPlayer){
             //playSound("newLevel"); 
-            console.log('boom!');
+            console.log('New level!');
             if(level == numLevels){
                 addScore(score, true); 
                 showTitle();
