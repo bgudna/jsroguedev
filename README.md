@@ -6,6 +6,8 @@ playable but all wrong, needs new sprites, and more sprites!
 
 ### TODO
 - [ ] a complete sprite overhaul, current sprites are temp garbage
+- [ ] add movement to characters (animation)
+- [ ] add fullscreen option (toggle F)
 - [ ] add a proper intro/welcome screen, digital painting
 - [ ] add a pause screen (when pressing escape) - show game logo
 - [ ] implement a help screen (when pressing "?" or "F1" - function in place, just need the text!)

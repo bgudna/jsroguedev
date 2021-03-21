@@ -1,13 +1,13 @@
 // settings and setups
 
 tileSize = 32;
-numTiles = 18;
+numTiles = 16;
 uiWidth = 8;
 level = 1;
 maxHp = 6;
 
 spritesheet = new Image();
-spritesheet.src = 'img/lolwhut.png';
+spritesheet.src = 'img/dev-sprites.png';
 spritesheet.onload = showTitle;
                          
 gameState = "loading";  
