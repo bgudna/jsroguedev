@@ -42,21 +42,24 @@ function draw(){
 
         player.draw();
         
-        drawText("Level: "+level, 20, false, 40, "violet");
-        drawText("Score: "+score, 20, false, 70, "violet");
+        drawText("Level: "+level, 20, false, 40, "gray");
+        drawText("Score: "+score, 20, false, 70, "gray");
+        drawText("Slain: "+killCount, 20, false, 100, "gray");
         if(player.hp > 0) {
-            drawText("Health: " +player.hp, 20, false, 100, "green");
+            drawText("Health: " +player.hp, 20, false, 130, "green");
         } else {
-            drawText("You are dead", 20, false, 100, "red");
+            drawText("You are dead", 20, false, 130, "red");
         }
         
-
+        drawText("Current spells:", 15, false, 170, "gray");
         for(let i=0; i<player.spells.length; i++){
             let spellText = (i+1) + ") " + (player.spells[i] || "");                        
-            drawText(spellText, 20, false, 140+i*40, "aqua");        
+            drawText(spellText, 20, false, 200+i*40, "gray");        
         }
     }
 }
+
+let killCount = 0;
 
 function tick(){
     for(let k=monsters.length-1;k>=0;k--){
@@ -68,6 +71,7 @@ function tick(){
             if(heartChance == 2) {
                 randomPassableTile().heart = true;
             }
+            killCount++;
             
         }
     }
@@ -119,7 +123,7 @@ function startGame(){
 
 function startLevel(playerHp, playerSpells){  
     spawnRate = 15;              
-    spawnCounter = spawnRate;  
+    spawnCounter = spawnRate;
 
     generateLevel();
 
@@ -199,8 +203,6 @@ function drawScores(){
             );
         }
     }
-
-    //console.log(scores);
 }
 
 function screenshake(){

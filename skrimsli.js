@@ -105,10 +105,10 @@ class Monster{
 
         if(this.isPlayer){                                                     
             //playSound("hit1");
-            console.log('hit1');                                              
+            console.log('player got hit');                                              
         }else{                                                       
             //playSound("hit2");
-            console.log('hit2');                                              
+            console.log('enemy got hit');                                              
         }
     }
 
